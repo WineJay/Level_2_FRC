@@ -8,7 +8,7 @@ def make_statement(statement, decoration):
     """Emphasises headings by adding decoration
     at the start and end"""
 
-    print(f"{decoration * 3} {statement} {decoration * 3}")
+    return f"{decoration * 3} {statement} {decoration * 3}"
 
 
 def yes_no(question):
@@ -201,7 +201,8 @@ print()
 
 # get product details
 product_name = not_blank("Product Name: ")
-quantity_made = num_check("Quantity being made", "integer")
+quantity_made = num_check("Quantity being made: ", "integer")
+quantity_made_string = f"Quantity made: {quantity_made}"
 
 # get variable expenses...
 print("Let's get the variable expenses...")
@@ -214,17 +215,20 @@ variable_subtotal = variable_expenses[1]
 print()
 has_fixed = yes_no("Do you have fixed expenses? ")
 
-if has_fixed == "Yes":
+if has_fixed == "yes":
     fixed_expenses = get_expenses("fixed")
 
     fixed_panda_string = fixed_expenses[0]
     fixed_subtotal = fixed_expenses[1]
 
-    # if the user has not entered any fixed expenses
-    # set empty panda to "" so that it does not display
-    if fixed_subtotal == 0:
-        has_fixed = "No"
-        fixed_panda_string = ""
+if has_fixed == "no":
+    fixed_subtotal = 0
+
+# if the user has not entered any fixed expenses
+# set empty panda to "" so that it does not display
+if fixed_subtotal == 0:
+    has_fixed = "no"
+    fixed_panda_string = ""
 
 total_expenses = variable_subtotal + fixed_subtotal
 total_expenses_string = f"Total Expenses: ${total_expenses:.2f}"
@@ -241,10 +245,44 @@ month = today.strftime("%m")
 year = today.strftime("%y")
 
 # heading and strings
-main_heading_string = [make_statement("Fund Raising Calculator "
-                                      f"({product_name}, {day}/{month}/{year}"), "="]
+main_heading_string = make_statement(f"Fund Raising Calculator "
+                                     f"({product_name}, {day}/{month}/{year})", "=")
 
 quantity_string = f"Quantity being made: {quantity_made}"
 variable_heading_string = make_statement("Variable Expenses", "-")
-variable_subtotal_string = f"Variable Expenses"
+variable_subtotal_string = f"Variable Expenses Subtotal: {variable_subtotal:.2f}"
 
+# set up string if we have fixed costs
+if has_fixed == "yes":
+    fixed_heading_string = make_statement("Fixed Expenses", "-")
+    fixed_subtotal_string = f"Fixed Expenses Subtotal: {fixed_subtotal:.2f}"
+
+# set fixed cost strings to blank if we don't have fixed costs
+else:
+    fixed_heading_string = make_statement("You have no Fixed Expenses", "-")
+    fixed_subtotal_string = "Fixed expenses Subtotal: $0.00"
+
+# output area
+to_write = [main_heading_string,
+            quantity_made_string,
+            "\n", variable_heading_string,
+            variable_panda_string,
+            variable_subtotal_string,
+            "\n", fixed_heading_string,
+            fixed_panda_string,
+            fixed_subtotal_string, total_expenses_string]
+
+# print area
+print()
+for item in to_write:
+    print(item)
+
+    # create file to hold data (add .txt extension)
+file_name = f"{product_name}_{year}_{month}_{day}"
+write_to = "{}.txt".format(file_name)
+
+text_file = open(write_to, "w+")
+# write the item to file
+for item in to_write:
+    text_file.write(item)
+    text_file.write("\n")

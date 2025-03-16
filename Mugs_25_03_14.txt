@@ -1,0 +1,21 @@
+=== Fund Raising Calculator (Mugs, 14/03/25) ===
+Quantity made: 100
+
+
+--- Variable Expenses ---
++--------+----------+------------+---------+
+| Item   | Amount   | $ / Item   | Cost    |
+|--------+----------+------------+---------|
+| A      | $20.00   | $10.00     | $200.00 |
++--------+----------+------------+---------+
+Variable Expenses Subtotal: 200.00
+
+
+--- Fixed Expenses ---
++--------+--------+
+| Item   | Cost   |
+|--------+--------|
+| rent   | $50.00 |
++--------+--------+
+Fixed Expenses Subtotal: 50.00
+Total Expenses: $250.00
