@@ -1,0 +1,29 @@
+=== Fund Raising Calculator (Custom Mugs , 19/03/25) ===
+Quantity made: 300
+
+
+--- Variable Expenses ---
++------------+----------+------------+---------+
+| Item       |   Amount | $ / Item   | Cost    |
+|------------+----------+------------+---------|
+| Printing   |      300 | $0.75      | $225.00 |
+| Plain Mugs |      300 | $1.00      | $300.00 |
+| Packaging  |      100 | $0.50      | $50.00  |
++------------+----------+------------+---------+
+Variable Expenses Subtotal: 575.00
+
+
+--- You have no Fixed Expenses ---
+
+Fixed expenses Subtotal: $0.00
+
+
+=== Selling Price Calculations ===
+Total Expenses: $575.00
+Profit Goal: $287.50
+
+Total Sales Needed: $862.50
+Minimum Selling Price: $2.88
+
+
+*** Suggested Selling Price: $3.00) ***
